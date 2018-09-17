@@ -1,6 +1,6 @@
 ---
 title: "P8105_hw1_jr3869"
-output: html_document
+output: github_document
 ---
 
 
