@@ -1,0 +1,122 @@
+---
+title: "P8105_hw1_jr3869"
+output: html_document
+---
+
+
+# problem 1
+
+Create a data frame comprised of:
+
+A random sample of size 10 from a uniform[0, 5] distribution
+A logical vector indicating whether elements of the sample are greater than 2
+A (length-10) character vector
+A (length-10) factor vector
+
+```{r problem1}
+library(tidyverse)
+set.seed(1)
+
+vec_df = tibble(
+  vec_data= runif(10, min=0, max=5),
+  vec_logical = vec_data >2,
+  vec_char = c("hello","world","my","name","is","Jingwei","Ren","a","b","c"),
+  vec_factor=factor(c("male","male","female","female","d","e","f","g","h","i"))
+)
+```
+
+### mean of each variable
+
+```{r mean}
+mean(vec_df$vec_data)
+mean(vec_df$vec_logical)
+mean(vec_df$vec_char)
+mean(vec_df$vec_factor)
+```
+
+* mean function works for random sample and logical vector, but does not work for character and factor vector.This is because mean is only meaningful with numerical and logical vector. 
+
+* Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output).
+
+### convert to numeric part1 
+```{r numeric, eval=FALSE}
+as.numeric(vec_df$vec_logical)
+as.numeric(vec_df$vec_char)
+as.numeric(vec_df$vec_factor)
+```
+
+*Logical vector converts to 0 and 1.
+*Character vector gives warning:NAs introduced by coercion.
+*Factor vecter returns numeric numbers, which is based on the alphabetical orders in the sequence. 
+
+
+* In a second code chunk, convert your character variable from character to factor to numeric.
+similarly, convert your factor variable from factor to character to numeric.
+
+### convert to numeric part2
+
+```{r convert,, eval=FALSE}
+as.numeric(as.factor(vec_df$vec_char))
+as.numeric(as.character(vec_df$vec_factor))
+```
+
+*Converting character variable from character to factor to numeric returns a vector of numeric numbers.
+*Converting factor variable from factor to character to numeric returns Warning: NAs introduced by coercion.
+
+# problem 2
+
+Create a data frame comprised of:
+x: a random sample of size 1000 from a standard Normal distribution
+y: a random sample of size 1000 from a standard Normal distribution
+A logical vector indicating whether the x + y > 0
+A numeric vector created by coercing the above logical vector
+A factor vector created by coercing the above logical vector
+
+
+### create a data frame
+
+```{r problem2}
+
+set.seed(1)
+
+plot_df = tibble(
+  x=rnorm(1000),
+  y=rnorm(1000),
+  vec_logical= x+y >0,
+  vec_numeric =as.numeric(vec_logical),
+  vec_factor = as.factor(vec_logical)
+  
+)
+```
+* the size of the dataset is `r nrow(plot_df)` rows by `r ncol(plot_df)` columns.
+* The mean is `r mean(plot_df$x)`
+* The median is  `r median(plot_df$x)`
+* the proportion of cases for which the logical vector is true  `r sum(plot_df$vec_logical == TRUE)/length(plot_df$vec_logical) `
+
+### make a scatterplot
+
+* Make a scatterplot of y vs x; color points using the logical variable 
+
+```{r plot}
+library(tidyverse)
+
+ggplot(plot_df, aes(x = x, y = y, color=vec_logical)) + geom_point()
+
+ggsave("scatter_plot1.pdf")
+```
+
+* In this case, x+y >0 is showing in blue and x+y <=0 is showing in red. Only two colors are in the color scale.
+
+* Make a second and third scatterplot that color points using the numeric and factor variables
+
+```{r plot2}
+library(tidyverse)
+
+ggplot(plot_df, aes(x = x, y = y, color=vec_numeric)) + geom_point()
+
+ggplot(plot_df, aes(x = x, y = y, color=vec_factor)) + geom_point()
+```
+
+* In the second plot, the color scale uses a gradident, color changes from bright blue to dark blue as the sum of x,y deceases. Because there are only two different values in  vec_numeric, only two colors are shown on the plot.
+
+* In the third plot, x+y >0 is showing in blue and x+y <=0 is showing in red. Only two colors are in the color scale. 
