@@ -45,9 +45,9 @@ as.numeric(vec_df$vec_char)
 as.numeric(vec_df$vec_factor)
 ```
 
-*Logical vector converts to 0 and 1.
-*Character vector gives warning:NAs introduced by coercion.
-*Factor vecter returns numeric numbers, which is based on the alphabetical orders in the sequence. 
+* Logical vector converts to 0 and 1.
+* Character vector gives warning:NAs introduced by coercion.
+* Factor vecter returns numeric numbers, which is based on the alphabetical orders in the sequence. 
 
 
 * In a second code chunk, convert your character variable from character to factor to numeric.
