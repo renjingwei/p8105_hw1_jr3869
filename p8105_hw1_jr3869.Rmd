@@ -60,8 +60,8 @@ as.numeric(as.factor(vec_df$vec_char))
 as.numeric(as.character(vec_df$vec_factor))
 ```
 
-*Converting character variable from character to factor to numeric returns a vector of numeric numbers.
-*Converting factor variable from factor to character to numeric returns Warning: NAs introduced by coercion.
+* Converting character variable from character to factor to numeric returns a vector of numeric numbers.
+* Converting factor variable from factor to character to numeric returns Warning: NAs introduced by coercion.
 
 # problem 2
 
