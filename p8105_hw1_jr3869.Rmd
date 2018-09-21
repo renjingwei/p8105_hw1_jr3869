@@ -105,7 +105,7 @@ ggplot(plot_df, aes(x = x, y = y, color=vec_logical)) + geom_point()
 ggsave("scatter_plot1.pdf")
 ```
 
-* In this case, x+y >0 is showing in blue and x+y <=0 is showing in red. Only two colors are in the color scale.
+* In this case, blue points indicate TRUE and red points indicate FALSE. Only two colors are in the color scale.
 
 * Make a second and third scatterplot that color points using the numeric and factor variables
 
@@ -119,4 +119,4 @@ ggplot(plot_df, aes(x = x, y = y, color=vec_factor)) + geom_point()
 
 * In the second plot, the color scale uses a gradident. Color changes from bright blue to dark blue. Because there are only two different values in  vec_numeric, only two colors are shown on the plot.
 
-* In the third plot, x+y >0 is showing in blue and x+y <=0 is showing in red. Only two colors are in the color scale. 
+* In the third plot, only two discrete colors are in the color scale. Blue points indicate TRUE and red points indicate FALSE.
